@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShopEasy - Premium E-Commerce Store</title>
+    <title>Rarefold - Premium E-Commerce Store</title>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -2390,10 +2390,587 @@ header {
 /* Update for smaller screens */
 @media (max-width: 768px) {
     .mobile-nav {
-        top: 110px; /* Adjusted for smaller navbar */
+        top: 50px; /* Adjusted for smaller navbar */
         max-height: calc(100vh - 60px);
     }
 }
+
+/* Add this to your existing CSS */
+@media (min-width: 851px) {
+    .user-info {
+        display: flex !important;
+    }
+    
+    .mobile-user-info {
+        display: none !important;
+    }
+}
+
+@media (max-width: 850px) {
+    .user-info {
+        display: none !important;
+    }
+    
+    .mobile-user-info {
+        display: block;
+    }
+}
+
+/* Fix for input icons overlapping */
+.input-with-icon {
+    position: relative;
+    width: 100%;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray);
+    z-index: 1;
+    font-size: 1.1rem;
+    pointer-events: none; /* Prevents icon from interfering with input clicks */
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 14px 16px 14px 48px !important; /* Left padding to make room for icon */
+    border: 1px solid var(--gray-light);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    background: white;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.input-with-icon input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* For textarea if needed */
+.input-with-icon textarea {
+    padding-left: 48px !important;
+}
+
+/* Mobile responsive fix */
+@media (max-width: 480px) {
+    .input-with-icon input {
+        padding: 12px 14px 12px 44px !important;
+        font-size: 0.95rem;
+    }
+    
+    .input-with-icon i {
+        left: 14px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .input-with-icon input {
+        padding: 10px 12px 10px 40px !important;
+    }
+    
+    .input-with-icon i {
+        left: 12px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Admin Tabs */
+.admin-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    background: white;
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-light);
+}
+
+.admin-tab {
+    padding: 12px 24px;
+    background: white;
+    border: 1px solid var(--gray-light);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    color: var(--dark);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.admin-tab i {
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.admin-tab:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.admin-tab:hover i {
+    color: white;
+}
+
+.admin-tab.active {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    border-color: transparent;
+}
+
+.admin-tab.active i {
+    color: white;
+}
+
+/* Admin Sections */
+.admin-section {
+    display: none;
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--gray-light);
+    margin-bottom: 2rem;
+    animation: fadeIn 0.5s ease;
+}
+
+.admin-section.active {
+    display: block;
+}
+
+.admin-section-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-light);
+}
+
+.admin-section-header h3 {
+    font-size: 1.8rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 0.5rem;
+}
+
+.admin-section-header h3 i {
+    color: var(--primary);
+}
+
+.section-desc {
+    color: var(--gray);
+    font-size: 1rem;
+    margin-left: 2.5rem;
+}
+
+/* Form Styles */
+.add-product-form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-group label i {
+    color: var(--primary);
+    margin-right: 8px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--gray-light);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Search and Filter */
+.manage-products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+    min-width: 250px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray);
+    z-index: 1;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 16px 12px 48px;
+    border: 2px solid var(--gray-light);
+    border-radius: var(--radius-full);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.filter-options {
+    min-width: 180px;
+}
+
+.filter-options select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--gray-light);
+    border-radius: var(--radius-full);
+    font-size: 0.95rem;
+    background: white;
+    cursor: pointer;
+}
+
+/* Products Grid in Admin */
+.admin-products-list {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.admin-products-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.admin-products-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.admin-products-list::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+.admin-product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--gray-light);
+    border-radius: var(--radius-lg);
+    background: white;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-product-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.admin-product-item:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+    transform: translateX(5px);
+}
+
+.admin-product-item:hover::before {
+    opacity: 1;
+}
+
+.admin-product-info {
+    flex: 1;
+    padding-right: 1.5rem;
+}
+
+.admin-product-info h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: var(--dark);
+}
+
+.admin-product-info .product-category-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    color: white;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.admin-product-info .product-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.admin-product-info .product-desc-preview {
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.admin-product-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.admin-product-actions .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    border-radius: var(--radius);
+    min-width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Image Preview */
+.image-preview-container {
+    margin: 1.5rem 0;
+    text-align: center;
+    padding: 1rem;
+    background: var(--light);
+    border-radius: var(--radius);
+}
+
+.image-preview {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: var(--radius);
+    border: 2px solid var(--gray-light);
+    padding: 0.5rem;
+    margin: 1rem auto 0;
+    background: white;
+}
+
+/* Product Count Badge */
+.product-count {
+    background: var(--light);
+    color: var(--dark);
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid var(--gray-light);
+    white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .admin-tabs {
+        justify-content: center;
+    }
+    
+    .admin-tab {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-section {
+        padding: 1.5rem;
+    }
+    
+    .admin-section-header h3 {
+        font-size: 1.5rem;
+    }
+    
+    .section-desc {
+        margin-left: 0;
+    }
+    
+    .admin-product-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.2rem;
+    }
+    
+    .admin-product-info {
+        padding-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .admin-product-actions {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .manage-products-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-box {
+        width: 100%;
+    }
+    
+    .filter-options {
+        width: 100%;
+    }
+    
+    .product-count {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-tabs {
+        flex-direction: column;
+    }
+    
+    .admin-tab {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .admin-section {
+        padding: 1rem;
+    }
+    
+    .admin-product-actions {
+        flex-direction: column;
+    }
+    
+    .admin-product-actions .btn {
+        width: 100%;
+    }
+}
+
+/* New Order Badge */
+.new-badge {
+    background: linear-gradient(135deg, var(--success) 0%, #0ca678 100%);
+    color: white;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-left: 10px;
+    display: inline-block;
+    animation: pulse 2s infinite;
+}
+
+.new-order {
+    position: relative;
+    border-left: 4px solid var(--success);
+    animation: glow 2s infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 10px 5px rgba(16, 185, 129, 0.2);
+    }
+}
+
+/* Optional: Add a subtle background to new orders */
+.new-order .order-header {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, transparent 100%);
+}
+
+/* Order count indicator */
+.orders-count {
+    background: var(--primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    margin-left: 1rem;
+}
+
+/* Sort info */
+.sort-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    padding: 8px 16px;
+    background: var(--light);
+    border-radius: var(--radius-full);
+}
+
+.sort-info i {
+    color: var(--primary);
+}
+
     </style>
 </head>
 <body>
@@ -2407,7 +2984,7 @@ header {
             
             <div class="logo">
                 <i class="fas fa-shopping-bag"></i>
-                <span>ShopEasy</span>
+                <span>Rarefold</span>
             </div>
             
             <div class="user-info" id="userInfo" style="display: none;">
@@ -2473,7 +3050,7 @@ header {
         <!-- Home Page -->
         <div id="home" class="page active">
             <div class="hero">
-                <h1>Welcome to ShopEasy</h1>
+                <h1>Welcome to Rarefold</h1>
                 <p>Discover amazing products at unbeatable prices. Shop from thousands of items with secure checkout and fast delivery.</p>
                 <div class="cta-buttons">
                     <button class="btn btn-primary" onclick="showPage('products')">
@@ -2521,44 +3098,142 @@ header {
         </div>
 
         <!-- Admin Page -->
-        <div id="admin" class="page">
-            <h2 class="section-title">
-                <i class="fas fa-cog"></i> Admin Dashboard
-            </h2>
-            <div class="admin-grid">
-                <div class="admin-section">
-                    <h3><i class="fas fa-plus-circle"></i> Add New Product</h3>
-                    <div class="form-group">
-                        <input type="text" id="pname" placeholder="Product Name" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <input type="number" id="pprice" placeholder="Price (₹)" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <textarea id="pdesc" placeholder="Description" class="form-control" rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="pimageUrl" placeholder="Image URL" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="pcategory" placeholder="Category" class="form-control">
-                    </div>
-                    <button class="btn btn-primary" onclick="addProduct()">
-                        <i class="fas fa-plus"></i> Add Product
-                    </button>
-                </div>
+<!-- Admin Page - Updated with Tabs -->
+<div id="admin" class="page">
+    <h2 class="section-title">
+        <i class="fas fa-cog"></i> Admin Dashboard
+    </h2>
+    
+    <!-- Admin Tabs -->
+    <div class="admin-tabs">
+        <button class="admin-tab active" onclick="switchAdminTab('addProduct')">
+            <i class="fas fa-plus-circle"></i> Add Product
+        </button>
+        <button class="admin-tab" onclick="switchAdminTab('manageProducts')">
+            <i class="fas fa-edit"></i> Manage Products
+        </button>
+        <button class="admin-tab" onclick="switchAdminTab('allProducts')">
+            <i class="fas fa-boxes"></i> All Products
+        </button>
+        <button class="admin-tab" onclick="switchAdminTab('orders')">
+            <i class="fas fa-clipboard-list"></i> Orders
+        </button>
+    </div>
 
-                <div class="admin-section">
-                    <h3><i class="fas fa-boxes"></i> Manage Products</h3>
-                    <div id="adminProducts"></div>
+    <!-- Add Product Section -->
+    <div id="addProductSection" class="admin-section active">
+        <div class="admin-section-header">
+            <h3><i class="fas fa-plus-circle"></i> Add New Product</h3>
+            <p class="section-desc">Fill in the details to add a new product to your store</p>
+        </div>
+        <div class="add-product-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label><i class="fas fa-tag"></i> Product Name *</label>
+                    <input type="text" id="pname" placeholder="e.g., Premium Wireless Headphones" class="form-control">
                 </div>
-
-                <div class="admin-section">
-                    <h3><i class="fas fa-clipboard-list"></i> All Orders</h3>
-                    <div class="admin-orders-list" id="adminOrders"></div>
+                <div class="form-group">
+                    <label><i class="fas fa-rupee-sign"></i> Price (₹) *</label>
+                    <input type="number" id="pprice" placeholder="e.g., 1999" class="form-control">
                 </div>
             </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-align-left"></i> Description</label>
+                <textarea id="pdesc" placeholder="Enter product description..." class="form-control" rows="4"></textarea>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label><i class="fas fa-image"></i> Image URL</label>
+                    <input type="text" id="pimageUrl" placeholder="https://example.com/image.jpg" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-folder"></i> Category</label>
+                    <input type="text" id="pcategory" placeholder="e.g., Electronics, Fashion" class="form-control">
+                </div>
+            </div>
+            
+            <div class="image-preview-container" id="imagePreviewContainer" style="display: none;">
+                <p>Image Preview:</p>
+                <img id="imagePreview" src="" alt="Preview" class="image-preview">
+            </div>
+            
+            <button class="btn btn-primary" onclick="addProduct()">
+                <i class="fas fa-plus"></i> Add Product
+            </button>
         </div>
+    </div>
+
+    <!-- Manage Products Section -->
+    <div id="manageProductsSection" class="admin-section">
+        <div class="admin-section-header">
+            <h3><i class="fas fa-edit"></i> Manage Products</h3>
+            <p class="section-desc">Edit or delete existing products</p>
+        </div>
+        <div class="manage-products-header">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="manageSearchInput" placeholder="Search products to manage..." onkeyup="filterManageProducts()">
+            </div>
+            <span class="product-count" id="manageProductCount">0 products</span>
+        </div>
+        <div class="admin-products-list" id="adminProducts">
+            <!-- Products will be loaded here -->
+        </div>
+    </div>
+
+    <!-- All Products Section -->
+    <div id="allProductsSection" class="admin-section">
+        <div class="admin-section-header">
+            <h3><i class="fas fa-boxes"></i> All Products</h3>
+            <p class="section-desc">View all products in your store</p>
+        </div>
+        <div class="manage-products-header">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="allProductsSearchInput" placeholder="Search products..." onkeyup="filterAllProducts()">
+            </div>
+            <div class="filter-options">
+                <select id="categoryFilter" onchange="filterAllProducts()" class="form-control">
+                    <option value="all">All Categories</option>
+                </select>
+            </div>
+            <span class="product-count" id="allProductsCount">0 products</span>
+        </div>
+        <div class="products-grid" id="adminAllProductsGrid">
+            <!-- Products will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Orders Section -->
+    <div id="ordersSection" class="admin-section">
+        <div class="admin-section-header">
+            <h3><i class="fas fa-clipboard-list"></i> All Orders</h3>
+            <p class="section-desc">Manage customer orders</p>
+        </div>
+        <div class="manage-products-header">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="ordersSearchInput" placeholder="Search orders by ID, email..." onkeyup="filterAdminOrders()">
+            </div>
+            <div class="filter-options">
+                <select id="orderStatusFilter" onchange="filterAdminOrders()" class="form-control">
+                    <option value="all">All Status</option>
+                    <option value="PENDING">Pending</option>
+                    <option value="PLACED">Placed</option>
+                    <option value="SHIPPED">Shipped</option>
+                    <option value="OUT_FOR_DELIVERY">Out for Delivery</option>
+                    <option value="COMPLETED">Completed</option>
+                    <option value="CANCELLED">Cancelled</option>
+                </select>
+            </div>
+        </div>
+        <div class="admin-orders-list" id="adminOrders">
+            <!-- Orders will be loaded here -->
+        </div>
+    </div>
+</div>
     </div>
 
     <!-- Login/Signup Modal -->
@@ -2567,7 +3242,7 @@ header {
             <button class="close-modal" onclick="toggleAuthModal()">&times;</button>
             
             <div class="modal-header">
-                <h3>Welcome to ShopEasy</h3>
+                <h3>Welcome to Rarefold</h3>
             </div>
             
             <div class="modal-body">
@@ -2598,7 +3273,7 @@ header {
                     </button>
                     
                     <div class="form-divider">
-                        <span>New to ShopEasy?</span>
+                        <span>New to Rarefold?</span>
                     </div>
                     
                     <button class="btn btn-secondary" onclick="switchAuthTab('signup')" style="width: 100%;">
@@ -2704,14 +3379,14 @@ header {
     </div>
 
     <footer>
-        <p>&copy; 2024 ShopEasy. All rights reserved.</p>
-        <p><i class="fas fa-envelope"></i> contact@shopeasy.com | <i class="fas fa-phone"></i> +91 98765 43210</p>
+        <p>&copy; 2024 Rarefold. All rights reserved.</p>
+        <p><i class="fas fa-envelope"></i> contact@Rarefold.com | <i class="fas fa-phone"></i> +91 98765 43210</p>
         <p><i class="fas fa-map-marker-alt"></i> 123 Shopping Street, Mumbai, India - 400001</p>
     </footer>
 
     <script>
         const API = "https://script.google.com/macros/s/AKfycbwi4JaCjROz_SQKWP-UHsCmX05VZttT0pC-_fQeZQeBPU0e0P209SQaIdrqRkt0gnfbDA/exec";
-        const RAZORPAY_KEY = "rzp_test_S9LcRT3Tvt3nkQ";
+        const RAZORPAY_KEY = "rzp_live_SHY8pGfg0b1Sz0";
 
         let user = null;
         let role = null;
@@ -2793,17 +3468,26 @@ header {
 
         function updateAuthUI() {
             const userInfo = document.getElementById('userInfo');
+            const mobileUserInfo = document.getElementById('mobileUserInfo');
             const authBtn = document.getElementById('authBtn');
             const ordersBtn = document.getElementById('ordersBtn');
             const adminBtn = document.getElementById('adminBtn');
             const mobileAuthBtn = document.getElementById('mobileAuthBtn');
             const mobileOrdersBtn = document.getElementById('mobileOrdersBtn');
             const mobileAdminBtn = document.getElementById('mobileAdminBtn');
+            const mobileUserEmail = document.getElementById('mobileUserEmail');
+            const mobileUserRole = document.getElementById('mobileUserRole');
             
             if (user) {
-                userInfo.style.display = 'flex';
+                // Desktop user info - hide on mobile, show on desktop
+                userInfo.style.display = 'none'; // Hide desktop user info by default
                 document.getElementById('userEmail').textContent = user;
                 document.getElementById('userRole').textContent = role === 'admin' ? 'Admin' : 'User';
+                
+                // Mobile user info - show
+                mobileUserInfo.style.display = 'block';
+                mobileUserEmail.textContent = user;
+                mobileUserRole.textContent = role === 'admin' ? 'Admin' : 'User';
                 
                 // Desktop buttons
                 authBtn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Logout';
@@ -2826,7 +3510,9 @@ header {
                     mobileAdminBtn.style.display = 'none';
                 }
             } else {
+                // No user - hide all user info
                 userInfo.style.display = 'none';
+                mobileUserInfo.style.display = 'none';
                 
                 // Desktop buttons
                 authBtn.innerHTML = '<i class="fas fa-user"></i> Login';
@@ -3452,7 +4138,7 @@ header {
                 key: RAZORPAY_KEY,
                 amount: total * 100,
                 currency: "INR",
-                name: "ShopEasy",
+                name: "Rarefold",
                 description: `Order #${orderId}`,
                 order_id: null,
                 handler: function (res) {
@@ -3546,9 +4232,16 @@ header {
                 return;
             }
             
+            // Sort orders by date - NEWEST FIRST (descending order)
+            const sortedOrders = [...orders].sort((a, b) => {
+                const dateA = new Date(a[12] || a[6] || 0);
+                const dateB = new Date(b[12] || b[6] || 0);
+                return dateB - dateA; // Descending order (newest first)
+            });
+            
             let ordersHTML = '<div class="orders-container">';
             
-            orders.forEach(order => {
+            sortedOrders.forEach(order => {
                 try {
                     const orderId = order[0];
                     const email = order[1];
@@ -3572,6 +4265,9 @@ header {
                         minute: '2-digit'
                     });
                     
+                    // Add a "New" badge for orders placed in the last 24 hours
+                    const isNew = (Date.now() - new Date(order[12] || order[6] || 0)) < 24 * 60 * 60 * 1000;
+                    
                     // For old orders, show a generic message
                     if (!name && !address) {
                         name = "Shipping details not available";
@@ -3588,11 +4284,12 @@ header {
                     const canCancel = status === 'PENDING' || status === 'PLACED';
                     
                     ordersHTML += `
-                        <div class="order-card">
+                        <div class="order-card ${isNew ? 'new-order' : ''}">
                             <div class="order-header">
                                 <div>
                                     <span class="order-id">Order #${orderId}</span>
                                     <span class="order-date">• ${date}</span>
+                                    ${isNew ? '<span class="new-badge">NEW</span>' : ''}
                                     <br>
                                     <small>Payment: ${paymentMethod} ${paymentId && paymentId !== 'NA' ? `(${paymentId})` : ''}</small>
                                 </div>
@@ -3638,7 +4335,7 @@ header {
             ordersHTML += '</div>';
             container.innerHTML = ordersHTML;
         }
-
+        
         async function cancelUserOrder(orderId) {
             if (!confirm('Are you sure you want to cancel this order?')) return;
             
@@ -3839,9 +4536,16 @@ header {
                 return;
             }
             
+            // Sort orders by date - NEWEST FIRST (descending order)
+            const sortedOrders = [...orders].sort((a, b) => {
+                const dateA = new Date(a[12] || a[6] || 0);
+                const dateB = new Date(b[12] || b[6] || 0);
+                return dateB - dateA; // Descending order (newest first)
+            });
+            
             let ordersHTML = '';
             
-            orders.forEach(order => {
+            sortedOrders.forEach(order => {
                 try {
                     const orderId = order[0];
                     const email = order[1];
@@ -3865,6 +4569,9 @@ header {
                         minute: '2-digit'
                     });
                     
+                    // Add a "New" badge for orders placed in the last 24 hours
+                    const isNew = (Date.now() - new Date(order[12] || order[6] || 0)) < 24 * 60 * 60 * 1000;
+                    
                     // For old orders, show a generic message
                     if (!name && !address) {
                         name = "Shipping details not available";
@@ -3878,11 +4585,12 @@ header {
                     }
                     
                     ordersHTML += `
-                        <div class="order-card">
+                        <div class="order-card ${isNew ? 'new-order' : ''}">
                             <div class="order-header">
                                 <div>
                                     <span class="order-id">Order #${orderId}</span>
                                     <span class="order-date">• ${date}</span>
+                                    ${isNew ? '<span class="new-badge">NEW</span>' : ''}
                                     <br>
                                     <small>Customer: ${email}</small>
                                     <br>
@@ -3984,6 +4692,428 @@ header {
 
         // Initialize cart count
         updateCartCount();
+
+    /* ---------- ADMIN TAB SWITCHING ---------- */
+function switchAdminTab(tabName) {
+    // Hide all admin sections
+    document.querySelectorAll('.admin-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Remove active class from all tabs
+    document.querySelectorAll('.admin-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // Show selected section
+    let sectionId;
+    switch(tabName) {
+        case 'addProduct':
+            sectionId = 'addProductSection';
+            break;
+        case 'manageProducts':
+            sectionId = 'manageProductsSection';
+            updateAdminProducts(); // Refresh manage products view
+            break;
+        case 'allProducts':
+            sectionId = 'allProductsSection';
+            renderAdminAllProducts(); // Render all products in grid view
+            updateCategoryFilter(); // Update category filter dropdown
+            break;
+        case 'orders':
+            sectionId = 'ordersSection';
+            loadAdminOrders(); // Refresh orders
+            break;
+        default:
+            sectionId = 'addProductSection';
+    }
+    
+    document.getElementById(sectionId).classList.add('active');
+    
+    // Activate the clicked tab
+    event.target.closest('.admin-tab').classList.add('active');
+}
+
+/* ---------- ADMIN ALL PRODUCTS VIEW ---------- */
+function renderAdminAllProducts() {
+    const container = document.getElementById('adminAllProductsGrid');
+    if (!container) return;
+    
+    const filteredProducts = selectedCategory === 'all' 
+        ? allProducts 
+        : allProducts.filter(p => p[5] === selectedCategory);
+    
+    document.getElementById('allProductsCount').textContent = `${filteredProducts.length} products`;
+    
+    if (filteredProducts.length === 0) {
+        container.innerHTML = `
+            <div class="no-products">
+                <i class="fas fa-box-open" style="font-size: 4rem; color: var(--gray); margin-bottom: 1rem;"></i>
+                <h3>No Products Found</h3>
+                <p>Try adjusting your search or filter</p>
+            </div>
+        `;
+        return;
+    }
+    
+    container.innerHTML = filteredProducts.map(product => {
+        return `
+            <div class="product-card">
+                <div class="product-img" style="${product[4] ? `background-image: url('${product[4]}')` : ''}">
+                    ${product[5] ? `<span class="product-category">${product[5]}</span>` : ''}
+                    ${!product[4] ? `<i class="fas fa-box product-img-placeholder"></i>` : ''}
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">${product[1]}</h3>
+                    <p class="product-desc">${product[3] || 'No description available'}</p>
+                    <div class="product-price">₹${product[2]}</div>
+                    <div style="display: flex; gap: 10px; margin-top: 1rem;">
+                        <button class="btn btn-success" onclick="quickEditProduct('${product[0]}')" style="flex: 1;">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn btn-danger" onclick="deleteProduct('${product[0]}')" style="flex: 1;">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+/* ---------- UPDATE CATEGORY FILTER ---------- */
+function updateCategoryFilter() {
+    const filterSelect = document.getElementById('categoryFilter');
+    if (!filterSelect) return;
+    
+    const categories = ['all', ...new Set(allProducts.map(p => p[5]).filter(Boolean))];
+    
+    filterSelect.innerHTML = categories.map(category => 
+        `<option value="${category}" ${selectedCategory === category ? 'selected' : ''}>
+            ${category === 'all' ? 'All Categories' : category}
+        </option>`
+    ).join('');
+}
+
+/* ---------- FILTER ALL PRODUCTS ---------- */
+function filterAllProducts() {
+    const searchTerm = document.getElementById('allProductsSearchInput')?.value.toLowerCase() || '';
+    const categoryFilter = document.getElementById('categoryFilter')?.value || 'all';
+    
+    const filtered = allProducts.filter(product => {
+        const matchesSearch = product[1].toLowerCase().includes(searchTerm) || 
+                             (product[3] && product[3].toLowerCase().includes(searchTerm));
+        const matchesCategory = categoryFilter === 'all' || product[5] === categoryFilter;
+        return matchesSearch && matchesCategory;
+    });
+    
+    const container = document.getElementById('adminAllProductsGrid');
+    if (!container) return;
+    
+    document.getElementById('allProductsCount').textContent = `${filtered.length} products`;
+    
+    if (filtered.length === 0) {
+        container.innerHTML = `
+            <div class="no-products">
+                <i class="fas fa-search" style="font-size: 4rem; color: var(--gray); margin-bottom: 1rem;"></i>
+                <h3>No Products Found</h3>
+                <p>Try different search terms or clear filters</p>
+            </div>
+        `;
+        return;
+    }
+    
+    container.innerHTML = filtered.map(product => {
+        return `
+            <div class="product-card">
+                <div class="product-img" style="${product[4] ? `background-image: url('${product[4]}')` : ''}">
+                    ${product[5] ? `<span class="product-category">${product[5]}</span>` : ''}
+                    ${!product[4] ? `<i class="fas fa-box product-img-placeholder"></i>` : ''}
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">${product[1]}</h3>
+                    <p class="product-desc">${product[3] || 'No description available'}</p>
+                    <div class="product-price">₹${product[2]}</div>
+                    <div style="display: flex; gap: 10px; margin-top: 1rem;">
+                        <button class="btn btn-success" onclick="quickEditProduct('${product[0]}')" style="flex: 1;">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn btn-danger" onclick="deleteProduct('${product[0]}')" style="flex: 1;">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+/* ---------- FILTER MANAGE PRODUCTS ---------- */
+function filterManageProducts() {
+    const searchTerm = document.getElementById('manageSearchInput')?.value.toLowerCase() || '';
+    
+    const filtered = allProducts.filter(product => 
+        product[1].toLowerCase().includes(searchTerm) || 
+        (product[3] && product[3].toLowerCase().includes(searchTerm)) ||
+        (product[5] && product[5].toLowerCase().includes(searchTerm))
+    );
+    
+    document.getElementById('manageProductCount').textContent = `${filtered.length} products`;
+    
+    const container = document.getElementById('adminProducts');
+    if (!container) return;
+    
+    if (filtered.length === 0) {
+        container.innerHTML = `
+            <div class="no-products">
+                <i class="fas fa-search" style="font-size: 3rem; color: var(--gray); margin-bottom: 1rem;"></i>
+                <p>No products match your search</p>
+            </div>
+        `;
+        return;
+    }
+    
+    container.innerHTML = filtered.map(product => {
+        const productImage = product[4] ? 
+            `<img src="${product[4]}" alt="${product[1]}" style="width: 60px; height: 60px; object-fit: cover; border-radius: var(--radius);" onerror="this.style.display='none'">` :
+            '<i class="fas fa-box" style="font-size: 2rem; color: var(--gray);"></i>';
+        
+        return `
+            <div class="admin-product-item">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    ${productImage}
+                    <div class="admin-product-info">
+                        <h4>${product[1]}</h4>
+                        <span class="product-category-badge">${product[5] || 'Uncategorized'}</span>
+                        <div class="product-price">₹${product[2]}</div>
+                        <div class="product-desc-preview">${(product[3] || 'No description').substring(0, 100)}${(product[3] || '').length > 100 ? '...' : ''}</div>
+                    </div>
+                </div>
+                <div class="admin-product-actions">
+                    <button class="btn btn-success" onclick="toggleEditModal('${product[0]}')">
+                        <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button class="btn btn-danger" onclick="deleteProduct('${product[0]}')">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+/* ---------- FILTER ADMIN ORDERS ---------- */
+function filterAdminOrders() {
+    // This will use the existing displayAdminOrders function but with filters
+    // You'll need to store the original orders array and filter it
+    if (!window.allOrders) return;
+    
+    const searchTerm = document.getElementById('ordersSearchInput')?.value.toLowerCase() || '';
+    const statusFilter = document.getElementById('orderStatusFilter')?.value || 'all';
+    
+    const filtered = window.allOrders.filter(order => {
+        const orderId = order[0].toString().toLowerCase();
+        const email = order[1].toLowerCase();
+        const status = order[5] || 'PENDING';
+        
+        const matchesSearch = orderId.includes(searchTerm) || email.includes(searchTerm);
+        const matchesStatus = statusFilter === 'all' || status === statusFilter;
+        
+        return matchesSearch && matchesStatus;
+    });
+    
+    displayFilteredAdminOrders(filtered);
+}
+
+function displayFilteredAdminOrders(orders) {
+    const container = document.getElementById('adminOrders');
+    
+    if (!orders || orders.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: var(--gray); padding: 2rem;">No orders match your filters</p>';
+        return;
+    }
+    
+    // Use the same display logic as displayAdminOrders but with filtered orders
+    // Copy the display logic from your existing displayAdminOrders function
+    let ordersHTML = '';
+    
+    orders.forEach(order => {
+        try {
+            const orderId = order[0];
+            const email = order[1];
+            const products = JSON.parse(order[2] || '[]');
+            const paymentMethod = order[3] || 'COD';
+            const paymentId = order[4] || 'NA';
+            const status = order[5] || 'PENDING';
+            
+            let name = order[6] || '';
+            let phone = order[7] || '';
+            let address = order[8] || '';
+            let city = order[9] || '';
+            let state = order[10] || '';
+            let pincode = order[11] || '';
+            const date = new Date(order[12] || order[6] || Date.now()).toLocaleDateString('en-IN', {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            if (!name && !address) {
+                name = "Shipping details not available";
+                address = "Shipping details will be updated soon";
+            }
+            
+            let total = 0;
+            if (Array.isArray(products)) {
+                total = products.reduce((sum, item) => sum + (Number(item.price || item.amount || 0) * (item.quantity || 1)), 0);
+            }
+            
+            ordersHTML += `
+                <div class="order-card">
+                    <div class="order-header">
+                        <div>
+                            <span class="order-id">Order #${orderId}</span>
+                            <span class="order-date">• ${date}</span>
+                            <br>
+                            <small>Customer: ${email}</small>
+                            <br>
+                            <small>Payment: ${paymentMethod} ${paymentId && paymentId !== 'NA' ? `(${paymentId})` : ''}</small>
+                        </div>
+                        <div class="order-status status-${status.toLowerCase().replace('_', '-')}">
+                            ${status}
+                        </div>
+                    </div>
+                    
+                    <div class="order-address">
+                        <strong>Shipping Address:</strong>
+                        <p>${name}<br>
+                        ${phone}<br>
+                        ${address}<br>
+                        ${city ? city + ',' : ''} ${state} ${pincode ? '- ' + pincode : ''}</p>
+                    </div>
+                    
+                    <div class="order-items">
+                        ${Array.isArray(products) ? products.map(item => `
+                            <div class="order-item">
+                                <span>${item.name} ${item.quantity > 1 ? `(x${item.quantity})` : ''}</span>
+                                <span>₹${(Number(item.price || item.amount) * (item.quantity || 1)).toFixed(2)}</span>
+                            </div>
+                        `).join('') : 'No items'}
+                    </div>
+                    
+                    <div class="order-total">
+                        Total: ₹${total.toFixed(2)}
+                        <div style="margin-top: 1rem; display: flex; gap: 10px; justify-content: flex-end;">
+                            <button class="btn btn-info" onclick="toggleStatusModal('${orderId}')">
+                                <i class="fas fa-edit"></i> Update Status
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } catch (error) {
+            console.error('Error parsing order in admin view:', order, error);
+        }
+    });
+    
+    container.innerHTML = ordersHTML;
+}
+
+/* ---------- QUICK EDIT PRODUCT ---------- */
+function quickEditProduct(productId) {
+    toggleEditModal(productId);
+    // Switch to manage products tab if needed
+    switchAdminTab('manageProducts');
+}
+
+/* ---------- IMAGE PREVIEW ---------- */
+document.getElementById('pimageUrl')?.addEventListener('input', function(e) {
+    const url = e.target.value;
+    const previewContainer = document.getElementById('imagePreviewContainer');
+    const previewImg = document.getElementById('imagePreview');
+    
+    if (url) {
+        previewContainer.style.display = 'block';
+        previewImg.src = url;
+    } else {
+        previewContainer.style.display = 'none';
+    }
+});
+
+/* ---------- UPDATE ADMIN PRODUCTS (Modified) ---------- */
+function updateAdminProducts() {
+    const container = document.getElementById('adminProducts');
+    if (!container) return;
+    
+    document.getElementById('manageProductCount').textContent = `${allProducts.length} products`;
+    
+    container.innerHTML = allProducts.map(product => {
+        const productImage = product[4] ? 
+            `<img src="${product[4]}" alt="${product[1]}" style="width: 60px; height: 60px; object-fit: cover; border-radius: var(--radius);" onerror="this.style.display='none'">` :
+            '<i class="fas fa-box" style="font-size: 2rem; color: var(--gray);"></i>';
+        
+        return `
+            <div class="admin-product-item">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    ${productImage}
+                    <div class="admin-product-info">
+                        <h4>${product[1]}</h4>
+                        <span class="product-category-badge">${product[5] || 'Uncategorized'}</span>
+                        <div class="product-price">₹${product[2]}</div>
+                        <div class="product-desc-preview">${(product[3] || 'No description').substring(0, 100)}${(product[3] || '').length > 100 ? '...' : ''}</div>
+                    </div>
+                </div>
+                <div class="admin-product-actions">
+                    <button class="btn btn-success" onclick="toggleEditModal('${product[0]}')">
+                        <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button class="btn btn-danger" onclick="deleteProduct('${product[0]}')">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+/* ---------- MODIFIED loadProducts to update all views ---------- */
+async function loadProducts() {
+    try {
+        const res = await fetch(API, {
+            method: "POST",
+            body: JSON.stringify({ action: "getProducts" })
+        });
+        allProducts = await res.json();
+        renderFeaturedProducts();
+        renderAllProducts();
+        updateAdminProducts();
+        renderAdminAllProducts();
+        updateCategoryFilter();
+        renderCategoryFilters();
+    } catch (error) {
+        console.error('Error loading products:', error);
+    }
+}
+
+/* ---------- MODIFIED loadAdminOrders to store orders ---------- */
+async function loadAdminOrders() {
+    if (role !== 'admin') return;
+    
+    try {
+        const res = await fetch(API, {
+            method: "POST",
+            body: JSON.stringify({
+                action: "getAllOrders"
+            })
+        });
+        window.allOrders = await res.json();
+        displayAdminOrders(window.allOrders);
+    } catch (error) {
+        console.error('Error loading admin orders:', error);
+    }
+}
     </script>
 </body>
 </html>
