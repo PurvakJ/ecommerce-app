@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rarefold - Premium Clothing Store</title>
+    <title>Rarefold - Premium E-Commerce Store</title>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -411,6 +411,215 @@
             margin-bottom: 3rem;
         }
 
+        /* Full Screen Product Modal */
+.full-screen-modal .modal-content {
+    max-width: 1200px;
+    width: 95%;
+    height: 90vh;
+    background: white;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+.full-screen-content {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+.full-screen-product {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    height: 100%;
+    animation: fadeIn 0.5s ease;
+}
+
+.full-screen-image {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--light);
+    border-radius: var(--radius-lg);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.full-screen-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.full-screen-details {
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.full-screen-details h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark);
+    font-weight: 700;
+}
+
+.full-screen-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 1.5rem 0;
+}
+
+.full-screen-category {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    color: white;
+    padding: 8px 20px;
+    border-radius: var(--radius-full);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.full-screen-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--dark-light);
+    margin: 2rem 0;
+}
+
+.full-screen-sizes {
+    margin: 2rem 0;
+}
+
+.full-screen-sizes h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
+
+.size-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.size-btn {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--gray-light);
+    background: white;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.size-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+.size-btn.selected {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: var(--shadow-md);
+}
+
+.full-screen-actions {
+    margin-top: 3rem;
+    display: flex;
+    gap: 20px;
+}
+
+.full-screen-actions .btn {
+    flex: 1;
+    padding: 16px;
+    font-size: 1.2rem;
+}
+
+.close-fullscreen {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10000;
+}
+
+.close-fullscreen:hover {
+    background: var(--danger);
+    color: white;
+    transform: rotate(90deg);
+}
+
+@media (max-width: 992px) {
+    .full-screen-product {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .full-screen-image {
+        min-height: 400px;
+    }
+    
+    .full-screen-details h2 {
+        font-size: 2rem;
+    }
+    
+    .full-screen-price {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .full-screen-content {
+        padding: 1rem;
+    }
+    
+    .full-screen-image {
+        min-height: 300px;
+    }
+    
+    .full-screen-details {
+        padding: 1rem;
+    }
+    
+    .full-screen-details h2 {
+        font-size: 1.8rem;
+    }
+    
+    .full-screen-actions {
+        flex-direction: column;
+    }
+}
+
         .product-card {
             background: white;
             border-radius: var(--radius-lg);
@@ -773,6 +982,409 @@
             padding-top: 1.5rem;
             border-top: 2px solid var(--gray-light);
         }
+
+        /* Full Screen Product Modal */
+.full-screen-modal .modal-content {
+    max-width: 1200px;
+    width: 95%;
+    height: 90vh;
+    background: white;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+.full-screen-content {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+.full-screen-product {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    height: 100%;
+    animation: fadeIn 0.5s ease;
+}
+
+.full-screen-image {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    background-color: var(--light);
+    border-radius: var(--radius-lg);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid var(--gray-light);
+}
+
+.full-screen-image img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.3s ease;
+}
+
+.full-screen-image img:hover {
+    transform: scale(1.05);
+}
+
+.full-screen-details {
+    padding: 1rem 2rem 2rem 0;
+    overflow-y: auto;
+}
+
+.full-screen-details h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.full-screen-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.full-screen-price::before {
+    content: '₹';
+    font-size: 1.8rem;
+    opacity: 0.7;
+}
+
+.full-screen-category {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    color: white;
+    padding: 8px 20px;
+    border-radius: var(--radius-full);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-sm);
+}
+
+.full-screen-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--dark-light);
+    margin: 2rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid var(--gray-light);
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.full-screen-sizes {
+    margin: 2.5rem 0;
+}
+
+.full-screen-sizes h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.full-screen-sizes h3 i {
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.size-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.size-btn {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--gray-light);
+    background: white;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.size-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: scale(1.1);
+    box-shadow: var(--shadow-md);
+}
+
+.size-btn.selected {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: var(--shadow-md);
+    transform: scale(1.05);
+}
+
+.full-screen-actions {
+    margin-top: 3rem;
+    display: flex;
+    gap: 20px;
+}
+
+.full-screen-actions .btn {
+    flex: 1;
+    padding: 16px 24px;
+    font-size: 1.2rem;
+    border-radius: var(--radius);
+}
+
+.full-screen-actions .btn i {
+    font-size: 1.3rem;
+}
+
+.close-fullscreen {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10000;
+}
+
+.close-fullscreen:hover {
+    background: var(--danger);
+    color: white;
+    transform: rotate(90deg);
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+}
+
+/* Loading state for image */
+.full-screen-image.loading {
+    position: relative;
+}
+
+.full-screen-image.loading::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--gray-light);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .full-screen-product {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .full-screen-image {
+        min-height: 400px;
+    }
+    
+    .full-screen-details {
+        padding: 0 1rem 2rem;
+    }
+    
+    .full-screen-details h2 {
+        font-size: 2rem;
+    }
+    
+    .full-screen-price {
+        font-size: 2rem;
+        margin: 1rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .full-screen-modal .modal-content {
+        width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+    
+    .full-screen-content {
+        padding: 1rem;
+    }
+    
+    .full-screen-image {
+        min-height: 350px;
+        margin-top: 40px;
+    }
+    
+    .full-screen-details {
+        padding: 0 0.5rem 1.5rem;
+    }
+    
+    .full-screen-details h2 {
+        font-size: 1.8rem;
+    }
+    
+    .full-screen-price {
+        font-size: 1.8rem;
+    }
+    
+    .full-screen-description {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 1.5rem 0;
+    }
+    
+    .full-screen-sizes h3 {
+        font-size: 1.2rem;
+    }
+    
+    .size-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+    
+    .full-screen-actions {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 2rem;
+    }
+    
+    .full-screen-actions .btn {
+        padding: 14px 20px;
+        font-size: 1.1rem;
+    }
+    
+    .close-fullscreen {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        background: rgba(255, 255, 255, 0.95);
+    }
+}
+
+@media (max-width: 480px) {
+    .full-screen-image {
+        min-height: 280px;
+    }
+    
+    .full-screen-details h2 {
+        font-size: 1.5rem;
+    }
+    
+    .full-screen-price {
+        font-size: 1.5rem;
+    }
+    
+    .full-screen-category {
+        padding: 6px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .size-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 0.95rem;
+    }
+    
+    .full-screen-actions .btn {
+        padding: 12px 16px;
+        font-size: 1rem;
+    }
+}
+
+/* Animation for modal opening */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.full-screen-modal .modal-content {
+    animation: modalFadeIn 0.3s ease;
+}
+
+/* Image placeholder styling */
+.full-screen-image .image-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: var(--gray);
+}
+
+.full-screen-image .image-placeholder i {
+    font-size: 5rem;
+    color: var(--primary);
+    opacity: 0.3;
+}
+
+.full-screen-image .image-placeholder p {
+    font-size: 1rem;
+    color: var(--gray);
+}
+
+/* Custom scrollbar for details section */
+.full-screen-details::-webkit-scrollbar {
+    width: 6px;
+}
+
+.full-screen-details::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.full-screen-details::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+.full-screen-details::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
 
         /* Admin Page */
         .admin-grid {
@@ -1800,6 +2412,8 @@
             animation: pulse 2s infinite;
         }
 
+
+
         .new-order {
             position: relative;
             border-left: 4px solid var(--success);
@@ -1901,6 +2515,518 @@
                 width: 100%;
             }
         }
+
+    /* Full Screen Product Modal */
+.full-screen-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    animation: modalBgFade 0.3s ease;
+}
+
+@keyframes modalBgFade {
+    from {
+        background: rgba(0, 0, 0, 0);
+        backdrop-filter: blur(0);
+    }
+    to {
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(8px);
+    }
+}
+
+.full-screen-modal .modal-content {
+    max-width: 1400px;
+    width: calc(100% - 200px);
+    height: calc(100% - 200px);
+    margin: 100px;
+    background: white;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg), 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: modalContentFade 0.4s ease;
+}
+
+@keyframes modalContentFade {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.full-screen-content {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+.full-screen-product {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    gap: 4rem;
+    animation: fadeIn 0.5s ease;
+}
+
+.full-screen-image {
+    flex: 1;
+    max-width: 50%;
+    min-height: 500px;
+    background-color: var(--light);
+    border-radius: var(--radius-lg);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid var(--gray-light);
+    box-shadow: var(--shadow-lg);
+}
+
+.full-screen-image img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+    transition: transform 0.3s ease;
+}
+
+.full-screen-image img:hover {
+    transform: scale(1.05);
+}
+
+.full-screen-details {
+    flex: 1;
+    max-width: 50%;
+    padding: 2rem;
+    overflow-y: auto;
+    background: linear-gradient(to right bottom, white, var(--light));
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.full-screen-details h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark);
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.full-screen-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(79, 70, 229, 0.1) 100%);
+    border-radius: var(--radius);
+}
+
+.full-screen-price::before {
+    content: '₹';
+    font-size: 1.8rem;
+    opacity: 0.7;
+}
+
+.full-screen-category {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    color: white;
+    padding: 8px 24px;
+    border-radius: var(--radius-full);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 auto 1.5rem;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    width: fit-content;
+    display: block;
+}
+
+.full-screen-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--dark-light);
+    margin: 2rem 0;
+    padding: 2rem;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-light);
+    text-align: center;
+}
+
+.full-screen-sizes {
+    margin: 2.5rem 0;
+    text-align: center;
+}
+
+.full-screen-sizes h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.full-screen-sizes h3 i {
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.size-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.size-btn {
+    width: 70px;
+    height: 70px;
+    border: 2px solid var(--gray-light);
+    background: white;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.size-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: scale(1.1);
+    box-shadow: var(--shadow-md);
+}
+
+.size-btn.selected {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: var(--shadow-md);
+    transform: scale(1.05);
+}
+
+.full-screen-actions {
+    margin-top: 3rem;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.full-screen-actions .btn {
+    flex: 0 1 auto;
+    min-width: 200px;
+    padding: 16px 32px;
+    font-size: 1.2rem;
+    border-radius: var(--radius);
+    justify-content: center;
+}
+
+.full-screen-actions .btn i {
+    font-size: 1.3rem;
+}
+
+.full-screen-actions .btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+}
+
+.full-screen-actions .btn-secondary {
+    background: white;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.close-modal {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    box-shadow: var(--shadow-lg), 0 0 0 2px rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10000;
+}
+
+.close-modal:hover {
+    background: var(--danger);
+    color: white;
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.4);
+}
+
+/* Loading state for image */
+.full-screen-image.loading {
+    position: relative;
+}
+
+.full-screen-image.loading::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--gray-light);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Image placeholder styling */
+.full-screen-image .image-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: var(--gray);
+}
+
+.full-screen-image .image-placeholder i {
+    font-size: 5rem;
+    color: var(--primary);
+    opacity: 0.3;
+}
+
+.full-screen-image .image-placeholder p {
+    font-size: 1rem;
+    color: var(--gray);
+}
+
+/* Custom scrollbar for details section */
+.full-screen-details::-webkit-scrollbar {
+    width: 8px;
+}
+
+.full-screen-details::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.full-screen-details::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+.full-screen-details::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .full-screen-modal .modal-content {
+        width: calc(100% - 100px);
+        height: calc(100% - 100px);
+        margin: 50px;
+    }
+    
+    .full-screen-product {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .full-screen-modal .modal-content {
+        width: calc(100% - 60px);
+        height: calc(100% - 60px);
+        margin: 30px;
+    }
+    
+    .full-screen-product {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .full-screen-image {
+        max-width: 100%;
+        width: 100%;
+        min-height: 350px;
+    }
+    
+    .full-screen-details {
+        max-width: 100%;
+        width: 100%;
+        padding: 1.5rem;
+    }
+    
+    .full-screen-details h2 {
+        font-size: 2rem;
+    }
+    
+    .full-screen-price {
+        font-size: 2rem;
+        margin: 1rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .full-screen-modal .modal-content {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    .full-screen-content {
+        padding: 1rem;
+    }
+    
+    .full-screen-image {
+        min-height: 300px;
+        margin-top: 40px;
+    }
+    
+    .full-screen-details {
+        padding: 1rem;
+    }
+    
+    .full-screen-details h2 {
+        font-size: 1.8rem;
+    }
+    
+    .full-screen-price {
+        font-size: 1.8rem;
+    }
+    
+    .full-screen-description {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+    }
+    
+    .full-screen-sizes h3 {
+        font-size: 1.2rem;
+    }
+    
+    .size-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.1rem;
+    }
+    
+    .full-screen-actions {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 2rem;
+    }
+    
+    .full-screen-actions .btn {
+        min-width: 100%;
+        padding: 14px 20px;
+        font-size: 1.1rem;
+    }
+    
+    .close-modal {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .full-screen-image {
+        min-height: 250px;
+    }
+    
+    .full-screen-details h2 {
+        font-size: 1.5rem;
+    }
+    
+    .full-screen-price {
+        font-size: 1.5rem;
+    }
+    
+    .full-screen-category {
+        padding: 6px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .full-screen-description {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .size-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+    
+    .full-screen-actions .btn {
+        padding: 12px 16px;
+        font-size: 1rem;
+    }
+}
+
+/* Additional enhancements */
+.full-screen-details .product-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 1.5rem 0;
+}
+
+.full-screen-details .stock-status {
+    display: inline-block;
+    padding: 6px 16px;
+    background: linear-gradient(135deg, var(--success) 0%, #0ca678 100%);
+    color: white;
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.full-screen-details .product-id {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
     </style>
 </head>
 <body>
@@ -1914,7 +3040,7 @@
             
             <div class="logo">
                 <i class="fas fa-shopping-bag"></i>
-                <img src="https://i.postimg.cc/bJP0jS8K/Whats-App-Image-2026-03-11-at-09-17-58.jpg" alt="Rarefold" style="height: 40px; width: auto;">
+                <span>Rarefold</span>
             </div>
             
             <div class="user-info" id="userInfo" style="display: none;">
@@ -2014,6 +3140,16 @@
                 <!-- Cart content will be loaded here -->
             </div>
         </div>
+
+        <!-- Full Screen Product View Modal -->
+<div id="fullScreenProductModal" class="modal full-screen-modal">
+    <div class="full-screen-content">
+        <button class="close-modal" onclick="closeFullScreenProduct()">&times;</button>
+        <div class="full-screen-product" id="fullScreenProductContent">
+            <!-- Product content will be loaded here -->
+        </div>
+    </div>
+</div>
 
         <!-- Orders Page -->
         <div id="ordersPage" class="page">
@@ -2357,7 +3493,7 @@
 
     <footer>
         <p>&copy; 2024 Rarefold. All rights reserved.</p>
-        <p><i class="fas fa-envelope"></i> officialtherarefoldin@gmail.com | <i class="fas fa-phone"></i> +91-79863-37325</p>
+        <p><i class="fas fa-envelope"></i> Rarefold21@gmail.com | <i class="fas fa-phone"></i> +91 9780353569</p>
         <p><i class="fas fa-map-marker-alt"></i> Adalat Bazar, Patiala, 147001</p>
     </footer>
 
@@ -2522,6 +3658,167 @@
                 updateAuthUI();
             }
         }
+
+        /* ---------- FULL SCREEN PRODUCT VIEW ---------- */
+function openFullScreenProduct(productData) {
+    // Convert string to object if needed
+    let product;
+    if (typeof productData === 'string') {
+        try {
+            product = JSON.parse(productData);
+        } catch (e) {
+            console.error('Error parsing product data:', e);
+            return;
+        }
+    } else {
+        product = productData;
+    }
+    
+    // Parse sizes
+    let availableSizes = ['M'];
+    try {
+        if (product.sizes) {
+            if (typeof product.sizes === 'string') {
+                availableSizes = JSON.parse(product.sizes);
+            } else {
+                availableSizes = product.sizes;
+            }
+        }
+    } catch (e) {
+        console.error('Error parsing sizes:', e);
+    }
+    
+    // Create size buttons HTML
+    let sizeButtonsHTML = '';
+    if (availableSizes && availableSizes.length > 0) {
+        sizeButtonsHTML = availableSizes.map(size => 
+            `<button class="size-btn" onclick="selectFullScreenSize(this, '${size}')">${size}</button>`
+        ).join('');
+    } else {
+        sizeButtonsHTML = '<button class="size-btn selected" onclick="selectFullScreenSize(this, \'M\')">M</button>';
+    }
+    
+    const modal = document.getElementById('fullScreenProductModal');
+    const content = document.getElementById('fullScreenProductContent');
+    
+    // Determine image source
+    let imageHTML;
+    if (product.imageUrl) {
+        imageHTML = `<img src="${product.imageUrl}" alt="${product.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\' viewBox=\'0 0 24 24\' fill=\'%236366f1\'%3E%3Cpath d=\'M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z\'/%3E%3C/svg%3E'">`;
+    } else {
+        imageHTML = `<div style="display: flex; align-items: center; justify-content: center; height: 100%; background: var(--light); border-radius: var(--radius-lg);">
+            <i class="fas fa-box" style="font-size: 8rem; color: var(--primary); opacity: 0.3;"></i>
+        </div>`;
+    }
+    
+    content.innerHTML = `
+        <div class="full-screen-product">
+            <div class="full-screen-image">
+                ${imageHTML}
+            </div>
+            <div class="full-screen-details">
+                ${product.category ? `<span class="full-screen-category">${product.category}</span>` : ''}
+                <h2>${product.name}</h2>
+                <div class="full-screen-price">₹${product.price}</div>
+                <div class="full-screen-description">${product.desc || 'No description available for this product.'}</div>
+                
+                <div class="full-screen-sizes">
+                    <h3><i class="fas fa-tshirt"></i> Select Size</h3>
+                    <div class="size-buttons" id="fullScreenSizeButtons">
+                        ${sizeButtonsHTML}
+                    </div>
+                </div>
+                
+                <div class="full-screen-actions">
+                    <button class="btn btn-primary" onclick="addToCartFromFullScreen()">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                    <button class="btn btn-secondary" onclick="closeFullScreenProduct()">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Store current product data for the full screen view
+    window.currentFullScreenProduct = product;
+    window.currentFullScreenSize = availableSizes[0] || 'M';
+    
+    // Select the first size by default
+    setTimeout(() => {
+        const firstSizeBtn = document.querySelector('#fullScreenSizeButtons .size-btn');
+        if (firstSizeBtn) {
+            firstSizeBtn.classList.add('selected');
+        }
+    }, 100);
+    
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function closeFullScreenProduct() {
+    const modal = document.getElementById('fullScreenProductModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = ''; // Restore scrolling
+    window.currentFullScreenProduct = null;
+    window.currentFullScreenSize = null;
+}
+
+function selectFullScreenSize(btn, size) {
+    // Remove selected class from all size buttons
+    document.querySelectorAll('#fullScreenSizeButtons .size-btn').forEach(btn => {
+        btn.classList.remove('selected');
+    });
+    
+    // Add selected class to clicked button
+    btn.classList.add('selected');
+    
+    // Store selected size
+    window.currentFullScreenSize = size;
+}
+
+function addToCartFromFullScreen() {
+    if (!user) {
+        closeFullScreenProduct();
+        toggleAuthModal();
+        return;
+    }
+    
+    const product = window.currentFullScreenProduct;
+    const size = window.currentFullScreenSize || 'M';
+    
+    if (!product) return;
+    
+    // Create cart item with size
+    const cartItem = {
+        ...product,
+        size: size
+    };
+    
+    // Check if product with same size already exists in cart
+    const existingIndex = cartItems.findIndex(item => 
+        item.id === product.id && item.size === size
+    );
+    
+    if (existingIndex !== -1) {
+        showNotification(`${product.name} (Size: ${size}) is already in your cart!`, 'warning');
+    } else {
+        // Add new product with selected size
+        cartItems.push(cartItem);
+        showNotification(`${product.name} (Size: ${size}) added to cart!`, 'success');
+    }
+    
+    updateCartCount();
+    closeFullScreenProduct();
+}
+
+// Close full screen modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeFullScreenProduct();
+    }
+});
 
         function updateAuthUI() {
             const userInfo = document.getElementById('userInfo');
@@ -4098,6 +5395,135 @@
 
         // Initialize cart count
         updateCartCount();
+
+        function createProductCard(product) {
+            // Parse sizes from JSON string
+            let availableSizes = ['M']; // Default
+            try {
+                if (product[5]) {
+                    availableSizes = JSON.parse(product[5]);
+                }
+            } catch (e) {
+                console.error('Error parsing sizes:', e);
+            }
+            
+            const productData = {
+                id: product[0],
+                name: product[1],
+                price: product[2],
+                desc: product[3],
+                imageUrl: product[4] || '',
+                sizes: availableSizes,
+                category: product[6] || ''
+            };
+            
+            // Create size options HTML
+            let sizeOptionsHTML = '';
+            if (productData.sizes && productData.sizes.length > 0) {
+                sizeOptionsHTML = productData.sizes.map(size => 
+                    `<option value="${size}">${size}</option>`
+                ).join('');
+            } else {
+                sizeOptionsHTML = '<option value="M">M</option>';
+            }
+            
+            return `
+                <div class="product-card">
+                    <div class="product-img" style="${productData.imageUrl ? `background-image: url('${productData.imageUrl}')` : ''}" 
+                         onclick="openFullScreenProduct(${JSON.stringify(productData).replace(/"/g, '&quot;')})">
+                        ${productData.category ? `<span class="product-category">${productData.category}</span>` : ''}
+                        ${!productData.imageUrl ? 
+                            `<i class="fas fa-box product-img-placeholder"></i>` : 
+                            ''
+                        }
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" onclick="openFullScreenProduct(${JSON.stringify(productData).replace(/"/g, '&quot;')})">${productData.name}</h3>
+                        <p class="product-desc">${productData.desc || 'No description available'}</p>
+                        <div class="product-price">₹${productData.price}</div>
+                        
+                        <div class="size-selector">
+                            <label for="size-${productData.id}">Select Size:</label>
+                            <select id="size-${productData.id}" class="size-input">
+                                ${sizeOptionsHTML}
+                            </select>
+                        </div>
+                        
+                        <button class="btn-add-to-cart" onclick="addToCart(${JSON.stringify(productData).replace(/"/g, '&quot;')}, this)">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderAdminAllProducts() {
+            const container = document.getElementById('adminAllProductsGrid');
+            if (!container) return;
+            
+            const filteredProducts = selectedCategory === 'all' 
+                ? allProducts 
+                : allProducts.filter(p => p[6] === selectedCategory);
+            
+            document.getElementById('allProductsCount').textContent = `${filteredProducts.length} products`;
+            
+            if (filteredProducts.length === 0) {
+                container.innerHTML = `
+                    <div class="no-products" style="text-align: center; padding: 3rem;">
+                        <i class="fas fa-box-open" style="font-size: 4rem; color: var(--gray); margin-bottom: 1rem;"></i>
+                        <h3>No Products Found</h3>
+                        <p>Try adjusting your search or filter</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = filteredProducts.map(product => {
+                // Parse sizes for display
+                let sizes = ['M'];
+                try {
+                    if (product[5]) {
+                        sizes = JSON.parse(product[5]);
+                    }
+                } catch (e) {
+                    console.error('Error parsing sizes:', e);
+                }
+                
+                const productData = {
+                    id: product[0],
+                    name: product[1],
+                    price: product[2],
+                    desc: product[3],
+                    imageUrl: product[4] || '',
+                    sizes: sizes,
+                    category: product[6] || ''
+                };
+                
+                return `
+                    <div class="product-card">
+                        <div class="product-img" style="${product[4] ? `background-image: url('${product[4]}')` : ''}" 
+                             onclick="openFullScreenProduct(${JSON.stringify(productData).replace(/"/g, '&quot;')})">
+                            ${product[6] ? `<span class="product-category">${product[6]}</span>` : ''}
+                            ${!product[4] ? `<i class="fas fa-box product-img-placeholder"></i>` : ''}
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name" onclick="openFullScreenProduct(${JSON.stringify(productData).replace(/"/g, '&quot;')})">${product[1]}</h3>
+                            <p class="product-desc">${product[3] || 'No description available'}</p>
+                            <div class="product-price">₹${product[2]}</div>
+                            <div class="size-badge" style="margin: 10px 0;">Available Sizes: ${sizes.join(', ')}</div>
+                            <div style="display: flex; gap: 10px; margin-top: 1rem;">
+                                <button class="btn btn-success" onclick="toggleEditModal('${product[0]}')" style="flex: 1;">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn btn-danger" onclick="deleteProduct('${product[0]}')" style="flex: 1;">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
     </script>
 </body>
 </html>
