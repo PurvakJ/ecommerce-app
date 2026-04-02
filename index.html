@@ -3899,6 +3899,165 @@ footer {
 #password {
   padding-left: 50px;
 }
+
+/* Loading State for Essential Buttons */
+.btn.loading,
+.btn-primary.loading,
+.btn-secondary.loading,
+.btn-add-to-cart.loading,
+.payment-option.loading,
+button.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: scale(0.98);
+}
+
+.btn.loading::after,
+.btn-primary.loading::after,
+.btn-secondary.loading::after,
+.btn-add-to-cart.loading::after,
+button.loading::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    left: 50%;
+    margin-left: -9px;
+    margin-top: -9px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: button-loading-spin 0.8s linear infinite;
+}
+
+.btn-secondary.loading::after {
+    border: 2px solid rgba(184, 124, 79, 0.3);
+    border-top-color: var(--primary);
+}
+
+.btn.loading i,
+.btn-primary.loading i,
+.btn-secondary.loading i,
+.btn-add-to-cart.loading i,
+button.loading i {
+    visibility: hidden;
+}
+
+@keyframes button-loading-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Disabled button styling for essential actions */
+.btn:disabled,
+.btn-primary:disabled,
+.btn-secondary:disabled,
+.btn-add-to-cart:disabled,
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+    transform: none;
+}
+
+/* Specific loading states for checkout and payment */
+.checkout-form .btn-primary.loading,
+#shippingForm .btn-primary.loading,
+.payment-option.selected.loading {
+    background: var(--primary-dark);
+}
+
+/* Loading spinner for inline elements like discount apply */
+.btn-secondary.loading-small {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.btn-secondary.loading-small::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 50%;
+    left: 50%;
+    margin-left: -7px;
+    margin-top: -7px;
+    border: 2px solid rgba(184, 124, 79, 0.3);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: button-loading-spin 0.6s linear infinite;
+}
+
+/* Prevent double clicks on modal buttons */
+.modal .btn.loading {
+    background: var(--gray);
+    border-color: var(--gray);
+}
+
+.modal .btn-primary.loading {
+    background: var(--primary-dark);
+}
+/* Loading State for Essential Buttons */
+.btn.loading,
+.btn-primary.loading,
+.btn-secondary.loading,
+.btn-add-to-cart.loading,
+button.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: scale(0.98);
+}
+
+.btn.loading::after,
+.btn-primary.loading::after,
+.btn-secondary.loading::after,
+.btn-add-to-cart.loading::after,
+button.loading::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    left: 50%;
+    margin-left: -9px;
+    margin-top: -9px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: button-loading-spin 0.8s linear infinite;
+}
+
+.btn-secondary.loading::after {
+    border: 2px solid rgba(184, 124, 79, 0.3);
+    border-top-color: var(--primary);
+}
+
+.btn.loading i,
+.btn-primary.loading i,
+.btn-secondary.loading i,
+.btn-add-to-cart.loading i,
+button.loading i {
+    visibility: hidden;
+}
+
+@keyframes button-loading-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
   </style>
 </head>
 <body>
@@ -7770,7 +7929,7 @@ function showCheckoutForm() {
                       <label><i class="fas fa-ticket-alt"></i> Discount Code</label>
                       <div style="display: flex; gap: 10px;">
                           <input type="text" id="discountCode" placeholder="Enter discount code" style="flex: 1;">
-                          <button type="button" class="btn btn-secondary" onclick="applyDiscountCode()" style="padding: 12px 20px;">
+                          <button type="button" class="btn btn-secondary" onclick="applyDiscountCode()" style="padding: 12px 20px; color: black;">
                               Apply
                           </button>
                       </div>
@@ -7798,7 +7957,7 @@ function showCheckoutForm() {
                       <button type="button" class="btn btn-primary" onclick="checkout()" style="margin-top: 1.5rem; width: 100%;">
                           <i class="fas fa-lock"></i> Place Order
                       </button>
-                      <button type="button" class="btn btn-secondary" onclick="renderCart()" style="margin-top: 1rem; width: 100%;">
+                      <button type="button" class="btn btn-secondary" onclick="renderCart()" style="margin-top: 1rem; width: 100%; color: black;">
                           <i class="fas fa-arrow-left"></i> Back to Cart
                       </button>
                   </div>
@@ -8157,10 +8316,431 @@ const slides = document.querySelectorAll('.carousel-slide');
         });
         testimonialContainer.style.cursor = 'grab';
     }
+// Add these helper functions at the top of your script section
 
+// Show loading state on a button
+function setButtonLoading(button, isLoading) {
+    if (!button) return;
+    if (isLoading) {
+        button.classList.add('loading');
+        button.disabled = true;
+    } else {
+        button.classList.remove('loading');
+        button.disabled = false;
+    }
+}
+
+// Get button from event or selector
+function getButtonFromEvent(event, selector) {
+    let btn = event.target;
+    if (!btn.matches(selector)) {
+        btn = btn.closest(selector);
+    }
+    return btn;
+}
+
+// Replace your login function
+async function login() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const loginBtn = document.querySelector('#loginForm .btn-primary');
+    
+    if (!email || !password) {
+        showNotification('Please fill in all fields', 'error');
+        return;
+    }
+    
+    setButtonLoading(loginBtn, true);
+    
+    try {
+        const res = await fetch(API, {
+            method: "POST",
+            body: JSON.stringify({
+                action: "login",
+                email: email,
+                password: password
+            })
+        });
+        const data = await res.json();
+        
+        if (data.success) {
+            user = email;
+            role = data.role || 'user';
+            localStorage.setItem('user', user);
+            localStorage.setItem('role', role);
+            updateAuthUI();
+            toggleAuthModal();
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+            showNotification("Login successful!", 'success');
+            showPage('products');
+        } else {
+            showNotification("Invalid email or password", 'error');
+        }
+    } catch (error) {
+        showNotification("Login failed. Please try again.", 'error');
+    } finally {
+        setButtonLoading(loginBtn, false);
+    }
+}
+
+// Replace your signup function
+async function signup() {
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+    const confirmPassword = document.getElementById('signupConfirmPassword').value;
+    const signupBtn = document.querySelector('#signupForm .btn-primary');
+    
+    if (!email || !password) {
+        showNotification('Please fill in all fields', 'error');
+        return;
+    }
+    
+    if (password !== confirmPassword) {
+        showNotification('Passwords do not match', 'error');
+        return;
+    }
+    
+    setButtonLoading(signupBtn, true);
+    
+    try {
+        const res = await fetch(API, {
+            method: "POST",
+            body: JSON.stringify({
+                action: "signup",
+                email: email,
+                password: password,
+                name: ""
+            })
+        });
+        const data = await res.json();
+        
+        if (data.success) {
+            showNotification("Account created successfully! Please login.", 'success');
+            switchAuthTab('login');
+            document.getElementById('email').value = email;
+            document.getElementById('signupEmail').value = '';
+            document.getElementById('signupPassword').value = '';
+            document.getElementById('signupConfirmPassword').value = '';
+        } else {
+            showNotification(data.error || "Error creating account", 'error');
+        }
+    } catch (error) {
+        showNotification("Error creating account", 'error');
+    } finally {
+        setButtonLoading(signupBtn, false);
+    }
+}
+
+// Replace your applyDiscountCode function
+async function applyDiscountCode() {
+    const discountCode = document.getElementById('discountCode').value.trim();
+    const applyBtn = document.querySelector('#discountCode')?.parentElement?.querySelector('.btn-secondary');
+    
+    if (!discountCode) {
+        showNotification('Please enter a discount code', 'warning');
+        return;
+    }
+    
+    if (applyBtn) setButtonLoading(applyBtn, true);
+    
+    try {
+        const response = await fetch(API, {
+            method: "POST",
+            body: JSON.stringify({
+                action: "validateDiscountCode",
+                code: discountCode
+            })
+        });
+        const data = await response.json();
+        
+        const discountMessage = document.getElementById('discountMessage');
+        
+        if (data.success) {
+            const discountPercent = data.discount_percent;
+            const discountAmount = (window.originalSubtotal * discountPercent) / 100;
+            const finalTotal = window.originalSubtotal - discountAmount;
+            
+            window.appliedDiscount = {
+                code: discountCode,
+                percent: discountPercent,
+                amount: discountAmount
+            };
+            
+            document.getElementById('discountDisplay').style.display = 'block';
+            document.getElementById('discountAmount').textContent = discountAmount.toFixed(2);
+            document.getElementById('finalTotal').innerHTML = `₹${finalTotal.toFixed(2)}`;
+            discountMessage.innerHTML = `<span style="color: var(--success);"><i class="fas fa-check-circle"></i> Discount applied! ${discountPercent}% off (₹${discountAmount.toFixed(2)} saved)</span>`;
+            showNotification(`Discount code applied! ${discountPercent}% off`, 'success');
+        } else {
+            discountMessage.innerHTML = `<span style="color: var(--danger);"><i class="fas fa-times-circle"></i> ${data.error}</span>`;
+            showNotification(data.error, 'error');
+        }
+    } catch (error) {
+        console.error('Error applying discount:', error);
+        showNotification('Error applying discount code', 'error');
+    } finally {
+        if (applyBtn) setButtonLoading(applyBtn, false);
+    }
+}
+
+// Replace your checkout function
+async function checkout() {
+    if (cartItems.length === 0) {
+        showNotification('Your cart is empty!', 'error');
+        return;
+    }
+    
+    const checkoutBtn = document.querySelector('#shippingForm .btn-primary');
+    
+    const name = document.getElementById('shipName')?.value;
+    const phone = document.getElementById('shipPhone')?.value;
+    const address = document.getElementById('shipAddress')?.value;
+    const city = document.getElementById('shipCity')?.value;
+    const state = document.getElementById('shipState')?.value;
+    const pincode = document.getElementById('shipPincode')?.value;
+    
+    if (!name || !phone || !address || !city || !state || !pincode) {
+        showNotification('Please fill in all shipping details', 'error');
+        return;
+    }
+    
+    const selectedPayment = document.querySelector('.payment-option.selected p')?.textContent;
+    const paymentMethod = selectedPayment?.includes('Online') ? 'ONLINE' : 'COD';
+    const fullAddress = `${address}, ${city}, ${state} - ${pincode}`;
+    const subtotal = window.originalSubtotal;
+    const discountData = window.appliedDiscount;
+    
+    setButtonLoading(checkoutBtn, true);
+    
+    if (paymentMethod === 'COD') {
+        await processCOD(paymentMethod, {name, phone, address: fullAddress}, subtotal, discountData, checkoutBtn);
+    } else {
+        await processOnlinePayment(paymentMethod, {name, phone, address: fullAddress}, subtotal, discountData, checkoutBtn);
+    }
+}
+
+// Replace your processCOD function
+async function processCOD(paymentMethod, shippingDetails, subtotal, discountData, checkoutBtn) {
+    try {
+        const response = await fetch(API, {
+            method: "POST",
+            body: JSON.stringify({
+                action: "checkout",
+                email: user,
+                cart: cartItems,
+                subtotal: subtotal,
+                discount_code: discountData ? discountData.code : null,
+                discount_percent: discountData ? discountData.percent : null,
+                name: shippingDetails.name,
+                phone: shippingDetails.phone,
+                address: shippingDetails.address,
+                payment: "COD"
+            })
+        });
+        const data = await response.json();
+        
+        if (data.success) {
+            showNotification(`Order #${data.orderId} placed successfully with Cash on Delivery!`, 'success');
+            if (data.discountAmount > 0) {
+                showNotification(`Discount applied: ₹${data.discountAmount.toFixed(2)} saved!`, 'success');
+            }
+            cartItems = [];
+            window.appliedDiscount = null;
+            updateCartCount();
+            loadUserOrders();
+            showPage('ordersPage');
+        } else {
+            showNotification('Error placing order', 'error');
+        }
+    } catch (error) {
+        console.error('Error placing order:', error);
+        showNotification('Error placing order', 'error');
+    } finally {
+        if (checkoutBtn) setButtonLoading(checkoutBtn, false);
+    }
+}
+
+// Replace your processOnlinePayment function
+async function processOnlinePayment(paymentMethod, shippingDetails, subtotal, discountData, checkoutBtn) {
+    const finalTotal = discountData ? subtotal - discountData.amount : subtotal;
+    
+    // First, disable the checkout button since Razorpay will handle its own flow
+    if (checkoutBtn) setButtonLoading(checkoutBtn, true);
+    
+    var rzp = new Razorpay({
+        key: RAZORPAY_KEY,
+        amount: finalTotal * 100,
+        currency: "INR",
+        name: "Rarefold",
+        description: `Order Payment${discountData ? ` (Discount: ${discountData.percent}% off)` : ''}`,
+        handler: async function (res) {
+            try {
+                const response = await fetch(API, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        action: "checkout",
+                        email: user,
+                        cart: cartItems,
+                        subtotal: subtotal,
+                        discount_code: discountData ? discountData.code : null,
+                        discount_percent: discountData ? discountData.percent : null,
+                        name: shippingDetails.name,
+                        phone: shippingDetails.phone,
+                        address: shippingDetails.address,
+                        payment: "ONLINE",
+                        paymentId: res.razorpay_payment_id
+                    })
+                });
+                const data = await response.json();
+                
+                if (data.success) {
+                    showNotification(`Payment Successful! Order #${data.orderId}`, 'success');
+                    if (data.discountAmount > 0) {
+                        showNotification(`Discount applied: ₹${data.discountAmount.toFixed(2)} saved!`, 'success');
+                    }
+                    cartItems = [];
+                    window.appliedDiscount = null;
+                    updateCartCount();
+                    loadUserOrders();
+                    showPage('ordersPage');
+                } else {
+                    showNotification('Error saving order', 'error');
+                }
+            } catch (error) {
+                showNotification('Error saving order', 'error');
+            } finally {
+                if (checkoutBtn) setButtonLoading(checkoutBtn, false);
+            }
+        },
+        prefill: {
+            email: user,
+            contact: shippingDetails.phone,
+            name: shippingDetails.name
+        },
+        theme: {
+            color: "#b87c4f"
+        },
+        modal: {
+            ondismiss: function() {
+                showNotification('Payment cancelled', 'warning');
+                if (checkoutBtn) setButtonLoading(checkoutBtn, false);
+            }
+        }
+    });
+    rzp.open();
+}
+
+// Add loading to addToCart function
+function addToCart(productData, btn) {
+    if (!user) {
+        toggleAuthModal();
+        return;
+    }
+    
+    const addButton = btn;
+    setButtonLoading(addButton, true);
+    
+    let product;
+    if (typeof productData === 'string') {
+        try {
+            product = JSON.parse(productData);
+        } catch (e) {
+            console.error('Error parsing product data:', e);
+            setButtonLoading(addButton, false);
+            return;
+        }
+    } else {
+        product = productData;
+    }
+    
+    const sizeSelect = btn.parentElement.querySelector('.size-input');
+    const selectedSize = sizeSelect ? sizeSelect.value : 'M';
+    const quantityInput = btn.parentElement.querySelector('.quantity-input');
+    const quantity = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
+    
+    const existingIndex = cartItems.findIndex(item => 
+        item.id === product.id && item.size === selectedSize
+    );
+    
+    setTimeout(() => {
+        if (existingIndex !== -1) {
+            cartItems[existingIndex].quantity = (cartItems[existingIndex].quantity || 1) + quantity;
+            showNotification(`${product.name} (Size: ${selectedSize}) quantity updated to ${cartItems[existingIndex].quantity}!`, 'success');
+        } else {
+            cartItems.push({
+                ...product,
+                size: selectedSize,
+                quantity: quantity
+            });
+            showNotification(`${product.name} (Size: ${selectedSize}) x${quantity} added to cart!`, 'success');
+        }
+        updateCartCount();
+        setButtonLoading(addButton, false);
+    }, 100);
+}
+
+// Add loading to addProduct function
+async function addProduct() {
+    const addBtn = document.querySelector('#addProductSection .btn-primary');
+    setButtonLoading(addBtn, true);
+    
+    const name = document.getElementById('pname').value;
+    const price = document.getElementById('pprice').value;
+    const desc = document.getElementById('pdesc').value;
+    const imageUrl = document.getElementById('pimageUrl').value;
+    const category = document.getElementById('pcategory').value;
+    const sizes = getSelectedSizes();
+    
+    if (!name || !price) {
+        showNotification('Please fill in required fields', 'error');
+        setButtonLoading(addBtn, false);
+        return;
+    }
+    
+    if (sizes.length === 0) {
+        showNotification('Please select at least one size', 'error');
+        setButtonLoading(addBtn, false);
+        return;
+    }
+    
+    try {
+        const response = await fetch(API, {
+            method: "POST",
+            body: JSON.stringify({
+                action: "addProduct",
+                name: name,
+                price: Number(price),
+                description: desc,
+                imageUrl: imageUrl,
+                sizes: sizes,
+                category: category
+            })
+        });
+        const data = await response.json();
+        
+        if (data.success) {
+            showNotification('Product added successfully!', 'success');
+            document.getElementById('pname').value = '';
+            document.getElementById('pprice').value = '';
+            document.getElementById('pdesc').value = '';
+            document.getElementById('pimageUrl').value = '';
+            document.getElementById('pcategory').value = '';
+            
+            document.querySelectorAll('#sizeCheckboxGroup input[type="checkbox"]').forEach(cb => {
+                cb.checked = cb.value === 'M';
+            });
+            updateSelectedSizesDisplay();
+            loadProducts();
+        }
+    } catch (error) {
+        showNotification('Error adding product', 'error');
+    } finally {
+        setButtonLoading(addBtn, false);
+    }
+}
 
     </script>
 </body>
 </html>
-
 
