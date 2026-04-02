@@ -3891,6 +3891,14 @@ footer {
     justify-content: space-between;
     align-items: center;
 }
+
+#signupEmail,
+#signupPassword,
+#signupConfirmPassword,
+#email,
+#password {
+  padding-left: 50px;
+}
   </style>
 </head>
 <body>
@@ -4317,7 +4325,7 @@ footer {
                         <span>New to Rarefold?</span>
                     </div>
                     
-                    <button class="btn btn-secondary" onclick="switchAuthTab('signup')" style="width: 100%;">
+                    <button class="btn btn-secondary" onclick="switchAuthTab('signup')" style="width: 100%; color:black;">
                         <i class="fas fa-user-plus"></i> Create New Account
                     </button>
                 </div>
@@ -4354,7 +4362,7 @@ footer {
                         <span>Already have an account?</span>
                     </div>
                     
-                    <button class="btn btn-secondary" onclick="switchAuthTab('login')" style="width: 100%;">
+                    <button class="btn btn-secondary" onclick="switchAuthTab('login')" style="width: 100%; color: black;">
                         <i class="fas fa-sign-in-alt"></i> Login to Account
                     </button>
                 </div>
@@ -4452,7 +4460,7 @@ footer {
     <script>
       
         // IMPORTANT: Update this with your actual deployed Apps Script URL
-        const API = "https://script.google.com/macros/s/AKfycbzN8YDCD5WNQ3tGgz9rKBQ4dizmQNaAWZUd93NXiNteXEwtGynPnvmNEsfcjGENRb-54w/exec";
+        const API = "https://script.google.com/macros/s/AKfycbzdUH3ex_4D607y9c-dog020aSzCbkcxTejjpM-Q46fu2n0n92m7VVZ66kR8PbOf3cZ/exec";
         const RAZORPAY_KEY = "rzp_live_SHY8pGfg0b1Sz0";
 
         let user = null;
@@ -8150,40 +8158,6 @@ const slides = document.querySelectorAll('.carousel-slide');
         testimonialContainer.style.cursor = 'grab';
     }
 
-    // ---------- Helper functions for interactive CTAs ----------
-    window.showProductsPage = function() {
-        // For demo: scroll to featured products section smoothly
-        const productSection = document.getElementById('featuredProducts');
-        if (productSection) {
-            productSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            setTimeout(() => {
-                alert("✨ Explore our handpicked collection! Use the product cards to add items.");
-            }, 500);
-        } else {
-            alert("Start Shopping: Discover exclusive Rarefold products.");
-        }
-    };
-
-    window.toggleAuthDemo = function() {
-        alert("🔐 Create Account (Demo) — Join Rarefold and get 10% off your first order!");
-        // In a full website you'd open modal, here we simulate.
-    };
-
-    // Switch Auth Tab stub for modal (kept from original intent)
-    window.switchAuthTab = function(tab) {
-        console.log(`switch auth to ${tab}`);
-        alert(`✨ ${tab === 'signup' ? 'Sign up' : 'Login'} feature coming soon! Enjoy the journey.`);
-    };
-
-    window.toggleAuthModal = function() {
-        alert("🎁 Welcome! Please sign up to unlock loyalty rewards and early access.");
-    };
-
-    // Load products
-    renderFeaturedProducts();
-
-    // Additional micro-interaction: carousel dots were already set, also ensure product cards interactive
-    console.log("Rarefold homepage loaded with background carousel and modern aesthetics");
 
     </script>
 </body>
