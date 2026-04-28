@@ -4058,6 +4058,346 @@ button.loading i {
     cursor: not-allowed;
     pointer-events: none;
 }
+
+/* Discount Code Section - Mobile Optimized Styles */
+@media (max-width: 768px) {
+    /* Container for discount code input and button */
+    .checkout-form .form-group > div {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 8px !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+    
+    /* Make discount code input BIG on mobile */
+    .checkout-form #discountCode {
+        flex: 3 !important;
+        min-width: 0 !important;
+        width: auto !important;
+        padding: 14px 12px !important;
+        font-size: 16px !important; /* Prevents zoom on iOS */
+        height: 48px !important;
+        border-radius: var(--radius) !important;
+    }
+    
+    /* Make apply button smaller on mobile */
+    .checkout-form .btn-secondary[onclick="applyDiscountCode()"] {
+        flex: 1 !important;
+        min-width: 70px !important;
+        max-width: 85px !important;
+        padding: 8px 12px !important;
+        font-size: 13px !important;
+        height: 48px !important;
+        white-space: nowrap !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 4px !important;
+    }
+    
+    /* Hide icon text on very small screens to save space */
+    @media (max-width: 480px) {
+        .checkout-form .btn-secondary[onclick="applyDiscountCode()"] i {
+            margin-right: 0 !important;
+        }
+        .checkout-form .btn-secondary[onclick="applyDiscountCode()"] span {
+            display: none !important;
+        }
+    }
+    
+    /* Discount message area adjustments */
+    .checkout-form #discountMessage {
+        margin-top: 8px !important;
+        font-size: 12px !important;
+        word-break: break-word !important;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    /* Even larger input on very small screens */
+    .checkout-form #discountCode {
+        flex: 4 !important;
+        padding: 12px 10px !important;
+        font-size: 15px !important;
+    }
+    
+    /* Even smaller button on very small screens */
+    .checkout-form .btn-secondary[onclick="applyDiscountCode()"] {
+        flex: 1 !important;
+        min-width: 60px !important;
+        max-width: 75px !important;
+        padding: 6px 10px !important;
+        font-size: 12px !important;
+    }
+}
+
+/* Ensure the discount display section is also mobile-friendly */
+@media (max-width: 768px) {
+    .cart-total #discountDisplay {
+        font-size: 13px !important;
+        margin: 5px 0 !important;
+    }
+    
+    .cart-total #finalTotal {
+        font-size: 1.4rem !important;
+    }
+}
+
+/* Cart Item Layout Fixes - Mobile Optimized */
+
+/* Cart item container */
+.cart-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--gray-light);
+    flex-wrap: wrap;
+}
+
+/* Cart item image */
+.cart-item-image {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cart item info - takes remaining space */
+.cart-item-info {
+    flex: 1;
+    min-width: 150px;
+}
+
+/* Cart item name */
+.cart-item-name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    word-break: break-word;
+}
+
+/* Cart item description */
+.cart-item-desc {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin: 4px 0;
+}
+
+/* Size display badge */
+.size-display {
+    margin-top: 6px;
+}
+
+.size-badge {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    color: white;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Cart item actions container */
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+/* Cart item price */
+.cart-item-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+/* Delete button */
+.cart-item-actions .btn-danger {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+/* Quantity controls container */
+.cart-item-actions > div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Quantity buttons */
+.cart-item-actions .btn-secondary {
+    padding: 6px 12px;
+    min-width: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Quantity number */
+.cart-item-actions > div:first-child span {
+    min-width: 32px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ===== MOBILE RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+    /* Stack cart item vertically on mobile */
+    .cart-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 16px;
+        background: white;
+        border-radius: var(--radius);
+        margin-bottom: 12px;
+        border: 1px solid var(--gray-light);
+    }
+    
+    /* Make image full width on mobile */
+    .cart-item-image {
+        width: 100%;
+        height: 160px;
+    }
+    
+    .cart-item-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    
+    /* Cart item info takes full width */
+    .cart-item-info {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    /* Actions row - flex wrap with space-between */
+    .cart-item-actions {
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 8px;
+    }
+    
+    /* Price styling on mobile */
+    .cart-item-price {
+        font-size: 1.3rem;
+        order: 1;
+    }
+    
+    /* Quantity controls order */
+    .cart-item-actions > div:first-child {
+        order: 2;
+    }
+    
+    /* Delete button - ensure it stays within box */
+    .cart-item-actions .btn-danger {
+        order: 3;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Extra small devices (below 480px) */
+@media (max-width: 480px) {
+    .cart-item {
+        padding: 12px;
+    }
+    
+    .cart-item-image {
+        height: 140px;
+    }
+    
+    .cart-item-name {
+        font-size: 0.95rem;
+    }
+    
+    .cart-item-price {
+        font-size: 1.2rem;
+    }
+    
+    /* Make quantity buttons more touch-friendly */
+    .cart-item-actions .btn-secondary {
+        padding: 8px 14px;
+        min-width: 44px;
+    }
+    
+    /* Ensure delete button text doesn't overflow */
+    .cart-item-actions .btn-danger {
+        padding: 8px 14px;
+        white-space: nowrap;
+    }
+    
+    /* Full width actions on very small screens */
+    .cart-item-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    .cart-item-actions > div:first-child {
+        justify-content: center;
+    }
+    
+    .cart-item-price {
+        text-align: center;
+    }
+    
+    .cart-item-actions .btn-danger {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Cart container styling */
+.cart-container {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-light);
+}
+
+/* Cart total section */
+.cart-total {
+    text-align: right;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--primary-light);
+}
+
+@media (max-width: 768px) {
+    .cart-total {
+        text-align: center;
+    }
+    
+    .cart-total .btn {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.75rem;
+    }
+    
+    .cart-total .btn-secondary {
+        margin-top: 0.75rem;
+    }
+}
   </style>
 </head>
 <body>
@@ -6497,10 +6837,6 @@ function showCheckoutForm() {
                   </div>
                   
                   <div class="payment-options">
-                      <div class="payment-option selected" onclick="selectPayment(this, 'online')">
-                          <i class="fas fa-credit-card"></i>
-                          <p>Online Payment</p>
-                      </div>
                       <div class="payment-option" onclick="selectPayment(this, 'cod')">
                           <i class="fas fa-money-bill-wave"></i>
                           <p>Cash on Delivery</p>
@@ -7937,10 +8273,6 @@ function showCheckoutForm() {
                   </div>
                   
                   <div class="payment-options">
-                      <div class="payment-option selected" onclick="selectPayment(this, 'online')">
-                          <i class="fas fa-credit-card"></i>
-                          <p>Online Payment</p>
-                      </div>
                       <div class="payment-option" onclick="selectPayment(this, 'cod')">
                           <i class="fas fa-money-bill-wave"></i>
                           <p>Cash on Delivery</p>
@@ -8743,4 +9075,3 @@ async function addProduct() {
     </script>
 </body>
 </html>
-
